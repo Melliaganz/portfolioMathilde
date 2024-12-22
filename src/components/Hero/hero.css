@@ -1,0 +1,18 @@
+.heroContainer{
+    height: 100vh;
+    background-image: url(../../assets//webp/Sans\ titre-1\ \(17\)\ copie.webp);
+    background-size: cover;
+    display: flex;
+}
+.blocDescriptif{
+    padding: 13%;
+    width: 40%;
+}
+.heroTitle{
+    font-weight: 600;
+    font-size: 50px;
+}
+.heroDescri{
+    font-weight: 500;
+    font-size: 30px;
+}

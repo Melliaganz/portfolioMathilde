@@ -1,0 +1,14 @@
+{
+"header": {
+    "title": "Mathilde Hugues",
+    "home": "Accueil",
+    "about": "À propos",
+    "Portfolio": "Portfolio",
+    "Resume": "CV",
+    "Contact": "Contacts"
+},
+"hero":{
+    "title": "Game Artist",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus ac sapien eget scelerisque. Proin bibendum ipsum eget aliquam iaculis. Morbi nulla felis, feugiat at mollis et, ullamcorper nec mi. Fusce eget tempor mi, eu aliquam augue. Integer pellentesque metus libero, a iaculis libero luctus imperdiet. Morbi eget urna rutrum, aliquam urna at, vulputate erat. Cras dapibus nulla eget velit ultrices, id pulvinar turpis consequat. Maecenas "
+}
+}

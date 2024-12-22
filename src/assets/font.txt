@@ -1,0 +1,3 @@
+cinzel semibold nette = titres et nom d'onglets
+
+lora regular nette = texte
