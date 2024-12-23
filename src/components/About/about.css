@@ -1,0 +1,31 @@
+.aboutContainer{
+    margin-top: 200px;
+    margin-left: 50px;
+    margin-right:50px;
+    padding:25px;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+}
+.aboutTitleAndPp{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.aboutPic img{
+    border-radius: 100%;
+    object-fit: cover;
+    width: 300px;
+}
+.aboutTitle{
+    font-weight: 700;
+    font-size: 30px;
+    color: #eaac7b;
+}
+.aboutDescri{
+    margin-left: 25px;
+    margin-right: 25px;
+    color: #f2f8fe;
+    font-size: 25px;
+    font-weight: 500;
+}
