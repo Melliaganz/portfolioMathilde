@@ -4,6 +4,9 @@
     position: fixed;
     width: 100vw;
     background-image: url(../../assets/webp/trame.webp);
+    background-repeat: none;
+    background-size: cover;
+    z-index: 9999;
 }
 .titreHeader{ 
     color: #eaac7b; 
@@ -24,16 +27,16 @@
 .navContainer ul {
     list-style: none;
     display: flex;
-    justify-content: space-around; /* Ajoute de l'espace entre les éléments */
-    width: 100%; /* S'assure que les éléments occupent toute la largeur disponible */
-    padding: 0; /* Supprime le padding par défaut des ul */
-    margin: 0; /* Supprime les marges par défaut des ul */
+    justify-content: space-around; 
+    width: 100%; 
+    padding: 0; 
+    margin: 0;
 }
 .navContainer li {
     padding-left: 50px;
     font-weight: 500;
     font-size: 40px;
-    text-align: center; /* Centre le texte dans chaque élément */
+    text-align: center; 
 }
 .headerContainer{
     width: 100vw;

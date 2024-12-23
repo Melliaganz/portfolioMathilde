@@ -1,26 +1,85 @@
+@keyframes scrollCarousel {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
 .portfolioTitle {
     margin-top: 200px;
     font-size: 50px;
     font-weight: 600;
     color: #eaac7b;
-    text-align: center; /* Centre le titre dans son conteneur */
-    position: relative; /* Nécessaire pour positionner les ::before et ::after */
+    text-align: center;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    gap: 20px; 
+    position: relative;
 }
 
 .portfolioTitle::before,
 .portfolioTitle::after {
-    content: ""; /* Ajoute un élément vide */
+    content: "";
+    width: 20vw; 
+    height: 4px; 
+    background-color: #eaac7b; 
+}
+
+.carouselItem {
+    min-width: 300px;
+    flex-shrink: 0; 
+    transition: transform 0.3s;
+    text-align: center;
+    display: flex;
+    color: #f2f8fe;
+    flex-direction: column;
+    overflow: hidden;
+}
+.carousel {
+    display: flex;
+    gap: 15px;
+    will-change: transform;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.carouselItem:hover {
+    transform: scale(1.05);
+}
+
+.carouselItem img {
+    max-height: 500px;
+    border-radius: 5px;
+}
+
+.imageModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond noir transparent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+}
+
+.imageModal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 5px;
+}
+
+.imageModal:after {
+    content: "Click to close";
     position: absolute;
-    top: 50%; /* Centre verticalement le trait par rapport au texte */
-    width: 280px; /* Longueur du trait */
-    height: 4px; /* Épaisseur du trait */
-    background-color: #eaac7b; /* Couleur identique au titre */
+    bottom: 10%;
+    font-size: 1rem;
+    color: #fff;
 }
-
-.portfolioTitle::before {
-    left: -300px; /* Place le trait avant le texte */
-}
-
-.portfolioTitle::after {
-    right: -300px; /* Place le trait après le texte */
+.carouselContainer{
+    background-color: rgba(0, 0, 0, 0.3); /* Fond noir transparent */
+    padding-top: 25px;
 }

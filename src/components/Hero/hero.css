@@ -2,11 +2,17 @@
     height: 100vh;
     background-image: url(../../assets//webp/Sans\ titre-1\ \(17\)\ copie.webp);
     background-size: cover;
+    background-attachment: fixed;
+
+
     display: flex;
+    background-color: rgba(0, 0, 0, 0.2); /* Noir avec une opacité de 70% */
 }
 .blocDescriptif{
-    padding: 13%;
-    width: 40%;
+    padding: 12%;
+    padding-right: 5%;
+    width: 35%;
+    background-color: rgba(0, 0, 0, 0.2); /* Noir avec une opacité de 70% */
 }
 .heroTitle{
     font-weight: 600;

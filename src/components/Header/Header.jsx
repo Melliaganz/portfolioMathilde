@@ -1,6 +1,7 @@
 import React from 'react'
 import "./header.css"
 import { useTranslation } from 'react-i18next'
+import Langues from "../langues/Langues"
 
 function Header() {
     const { t, i18n } = useTranslation();
@@ -9,6 +10,7 @@ function Header() {
     <header className="header">
         <div className="headerContainer">
         <h1 className="titreHeader">{t('header.title')}</h1>
+        <Langues />
         <nav className='navContainer'>
             <ul >
             <li><a href="/">{t('header.home')}</a></li>

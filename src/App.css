@@ -6,13 +6,13 @@
 }
 
 .App{
-  /* width: 100vw;
-  height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: 'Cinzel', sans-serif;
   background-image: url(./assets/webp/trame.webp);
   background-repeat: no-repeat;
-  background-size: cover ;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
 }
