@@ -83,3 +83,41 @@
     background-color: rgba(0, 0, 0, 0.3); /* Fond noir transparent */
     padding-top: 25px;
 }
+/* Smartphones (petits) */
+@media (max-width: 480px) {
+    .portfolioTitle{
+        scale: 0.7;
+    }
+    .carouselContainer{
+        margin-top: -50px;
+        scale: 0.7;
+    }
+}
+
+/* Smartphones (moyens) */
+@media (min-width: 481px) and (max-width: 767px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+/* Tablettes */
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        font-size: 18px;
+    }
+}
+
+/* Petits ordinateurs */
+@media (min-width: 1025px) and (max-width: 1366px) {
+    body {
+        font-size: 20px;
+    }
+}
+
+/* Grands écrans */
+@media (min-width: 1367px) {
+    body {
+        font-size: 22px;
+    }
+}

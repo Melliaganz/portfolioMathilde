@@ -1,4 +1,5 @@
 import React from 'react';
+import "../Header/header.css"
 import { useTranslation } from 'react-i18next';
 
 function Langues() {
@@ -11,7 +12,7 @@ function Langues() {
     const currentLanguage = i18n.language;
 
     return (
-        <div className="language-switcher" style={{ display: 'flex', gap: '10px' }}>
+        <div className="language-switcher">
             <button
                 onClick={() => changeLanguage('en')}
                 style={{

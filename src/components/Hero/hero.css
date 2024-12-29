@@ -22,3 +22,46 @@
     font-weight: 500;
     font-size: 30px;
 }
+/* Smartphones (petits) */
+@media (max-width: 480px) {
+  .blocDescriptif{
+    margin-top: 40px;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;    
+  }
+  .heroDescri{
+    font-size: 22px;
+    text-align: center;
+  }
+}
+
+/* Smartphones (moyens) */
+@media (min-width: 481px) and (max-width: 767px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+/* Tablettes */
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        font-size: 18px;
+    }
+}
+
+/* Petits ordinateurs */
+@media (min-width: 1025px) and (max-width: 1366px) {
+    body {
+        font-size: 20px;
+    }
+}
+
+/* Grands écrans */
+@media (min-width: 1367px) {
+    body {
+        font-size: 22px;
+    }
+}

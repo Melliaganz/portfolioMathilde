@@ -38,7 +38,7 @@ function Contact() {
                   rel="noopener noreferrer"
                 >
                   <MailOutlineOutlinedIcon />
-                  &nbsp;mathilde.hugues@wanadoo.fr
+                  mathilde.hugues@wanadoo.fr
                 </a>
               </li>
               <li>
@@ -49,7 +49,7 @@ function Contact() {
                   rel="noopener noreferrer"
                 >
                   <LinkedInIcon />
-                  &nbsp;Mathilde Hugues
+                  Mathilde Hugues
                 </a>
               </li>
               <li>
@@ -60,14 +60,11 @@ function Contact() {
                   rel="noopener noreferrer"
                 >
                   <InstagramIcon />
-                  &nbsp;bluepine.s
+                  bluepine.s
                 </a>
               </li>
             </ul>
           </div>
-          <div className='copyrightFooter'>
-            <a href="https://github.com/Melliaganz" alt="github Melliaganz" ><GitHub />&nbsp;fait par Melliaganz</a>
-        </div>
         </div>
       </section>
     );
