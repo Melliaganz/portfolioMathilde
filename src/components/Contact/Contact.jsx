@@ -4,7 +4,6 @@ import "./contact.css"
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import { GitHub } from '@mui/icons-material';
 
 function Contact() {
     return (
