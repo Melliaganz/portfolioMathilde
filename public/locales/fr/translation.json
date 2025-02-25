@@ -14,5 +14,8 @@
 "about":{
     "title": "À propos de moi",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque scelerisque at mi ac auctor. In vel lacus a velit mollis pellentesque quis a massa. Mauris ut urna turpis. Proin egestas, dolor ut consectetur tristique, ex turpis luctus urna, ac pretium diam tellus ut justo. Phasellus imperdiet, dolor in interdum ornare, nibh leo laoreet tortor, at ornare tellus erat nec libero. Donec quis sagittis eros. Praesent a venenatis nulla, ac rutrum elit. Nunc vehicula lorem quis commodo consectetur. Suspendisse potenti. Vivamus in neque sem. Nunc nec tempor enim, in placerat erat. Duis vel magna tempus justo imperdiet blandit id sit amet eros.\n Quisque sed metus auctor, imperdiet sem sed, accumsan mauris. Vivamus quis egestas sem. Sed varius suscipit ligula vulputate tempus. Nullam nec quam eu turpis finibus semper. Proin id vehicula orci. Morbi id lorem lobortis, finibus felis sit amet, varius dolor. Nam non leo velit. Nam ornare ipsum vel varius tempus."
+},
+"portFolio":{
+    "cliquez": "Cliquez pour déplacer"
 }
 }

@@ -16,11 +16,11 @@ function Langues() {
             <button
                 onClick={() => changeLanguage('en')}
                 style={{
-                    background: currentLanguage === 'en' ? '#d3d3d3' : 'none', // Surlignage pour la langue sélectionnée
-                    border: currentLanguage === 'en' ? '2px solid #000' : 'none', // Optionnel : un contour
+                    background: currentLanguage === 'en' ? '#d3d3d3' : 'none',
+                    border: currentLanguage === 'en' ? '2px solid #000' : 'none',
                     cursor: 'pointer',
-                    padding: '5px', // Ajouter un padding pour un meilleur rendu
-                    borderRadius: '5px', // Rendre les boutons arrondis
+                    padding: '5px',
+                    borderRadius: '5px',
                 }}
             >
                 <img
@@ -32,10 +32,10 @@ function Langues() {
             <button
                 onClick={() => changeLanguage('fr')}
                 style={{
-                    background: currentLanguage === 'fr' ? '#d3d3d3' : 'none', // Surlignage pour la langue sélectionnée
-                    border: currentLanguage === 'fr' ? '2px solid #000' : 'none', // Optionnel : un contour
+                    background: currentLanguage === 'fr' ? '#d3d3d3' : 'none', 
+                    border: currentLanguage === 'fr' ? '2px solid #000' : 'none', 
                     cursor: 'pointer',
-                    padding: '5px', // Ajouter un padding pour un meilleur rendu
+                    padding: '5px', 
                     borderRadius: '5px',
                 }}
             >
