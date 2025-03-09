@@ -6,7 +6,7 @@
     background-image: url(http://localhost:3000/static/media/trame.99e35d486bece457228b.webp);
     background-repeat: none;
     background-size: cover;
-    z-index: 9999;
+    z-index: 1;
     padding: 10px 20px;
     align-items: center;
     justify-content: space-around;
@@ -42,16 +42,47 @@
 
 .navContainer li {
     padding-left: 50px;
-    font-weight: 500;
-    font-size: 40px;
+    font-weight: 600;
+    font-size: 30px;
     text-align: center; 
 }
 
 .navContainer a {
-    text-decoration: underline;
+    position: relative;
+    text-decoration: none;
     color: #f2f8fe;
+    padding: 25px 15px;
+    transition: color 0.3s ease-in-out;
+    overflow: hidden; /* Empêche les débordements de l'effet */
 }
-
+.navContainer a::before {
+    content: "";
+    position: absolute;
+    /* top: 100%; */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: top 0.3s ease-in-out;
+    z-index: -1; /* Place l'effet sous le texte */
+}
+.navContainer a::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #eaac7b;
+    transform: scaleY(0);
+    transition: transform 0.3s ease-in-out;
+    z-index: -1;
+}
+.navContainer a:hover {
+    color: #000; /* Change la couleur du texte */
+}
+.navContainer a:hover::after {
+    transform: scaleY(1); /* Active le contour */
+}
 /* Styles pour le menu hamburger */
 .hamburger {
     display: none;

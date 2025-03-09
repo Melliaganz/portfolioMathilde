@@ -1,12 +1,20 @@
 .heroContainer{
     height: 100vh;
-    background-image: url(../../assets//webp/Sans\ titre-1\ \(17\)\ copie.webp);
     background-size: cover;
     background-attachment: fixed;
-
-
     display: flex;
-    background-color: rgba(0, 0, 0, 0.2); /* Noir avec une opacité de 70% */
+    background-color: rgba(0, 0, 0, 0.5); /* Noir avec une opacité de 70% */
+}
+.heroContainer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    transition: opacity 1.5s ease-in-out;
+    opacity: 1;
 }
 .blocDescriptif{
     padding: 12%;
@@ -17,10 +25,51 @@
 .heroTitle{
     font-weight: 600;
     font-size: 50px;
+    color: #fff;
 }
 .heroDescri{
     font-weight: 500;
     font-size: 30px;
+    color: #fff;
+}
+h1{
+    font-size: large;
+    margin: 0.0em;
+}
+
+/* 🔹 Hero initialement invisible */
+.heroContainer {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    background-size: cover;
+    background-position: center;
+}
+
+/* 🔹 Apparition au scroll */
+.heroContainer.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 🔹 Effet d'apparition progressif pour le texte */
+.heroTitle, .heroDescri {
+    opacity: 1;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
+}
+
+.heroContainer.visible .heroTitle,
+.heroContainer.visible .heroDescri {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 🔹 Correction du fond sur mobile */
+@media (max-width: 768px) {
+    .heroContainer {
+        background-attachment: scroll;
+    }
 }
 /* Smartphones (petits) */
 @media (max-width: 480px) {
@@ -43,12 +92,24 @@
     body {
         font-size: 16px;
     }
+    .heroContainer {
+        background-attachment: scroll;
+    }
 }
 
 /* Tablettes */
 @media (min-width: 768px) and (max-width: 1024px) {
     body {
         font-size: 18px;
+    }
+    .parallax {
+        transform: translateY(var(--parallax-offset, 0px));
+    }
+    .heroContainer {
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+        will-change: transform;
     }
 }
 

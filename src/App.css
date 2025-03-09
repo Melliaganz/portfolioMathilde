@@ -15,4 +15,5 @@
   background-size: cover;
   background-attachment: fixed;
   overflow: hidden;
+  gap: 100px
 }

@@ -1,0 +1,26 @@
+{
+    "header": 
+    {
+        "title": "Mathilde Hugues",
+        "home": "Home",
+        "about": "About",
+        "portfolio": "Portfolio",
+        "resume": "Resume",
+        "contact": "Contact"
+    },
+    "hero":{
+        "title": "Game Artist",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean cursus ac sapien eget scelerisque. Proin bibendum ipsum eget aliquam iaculis. Morbi nulla felis, feugiat at mollis et, ullamcorper nec mi. Fusce eget tempor mi, eu aliquam augue. Integer pellentesque metus libero, a iaculis libero luctus imperdiet. Morbi eget urna rutrum, aliquam urna at, vulputate erat. Cras dapibus nulla eget velit ultrices, id pulvinar turpis consequat. Maecenas "
+    },
+    "about":{
+        "title": "About Me",
+        "description": "I am in my third year at LISAA, in Game Art. I try to touch a bit of everything: drawing, modeling, digital painting, modeling, painting,..."
+    },
+    "portFolio":{
+        "cliquez": "Click to interact"
+    },
+    "aria-label": {
+        "menuOuvert": "Menu Ouvert",
+        "menuFerme":"Menu Fermé"
+    }
+}

@@ -1,17 +1,20 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
-import HttpBackend from "i18next-http-backend";
+
+import fr from "./locales/fr.json";
+import en from "./locales/en.json";
 
 i18n
-  .use(HttpBackend) // Charge les fichiers de traduction
-  .use(LanguageDetector) // Détecte la langue du navigateur
-  .use(initReactI18next) // Intègre avec React
+  .use(initReactI18next)
   .init({
-    fallbackLng: "en", // Langue par défaut
-    debug: true, // Active les logs pour le développement
+    resources: {
+      fr: { translation: fr },
+      en: { translation: en }
+    },
+    lng: "fr",
+    fallbackLng: "fr",
     interpolation: {
-      escapeValue: false, // Pas nécessaire pour React
+      escapeValue: false,
     },
   });
 

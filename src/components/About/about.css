@@ -1,11 +1,12 @@
 .aboutContainer{
-    margin-top: 200px;
+    margin-top: 50px;
     margin-left: 50px;
     margin-right:50px;
     padding:25px;
     background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
 .aboutTitleAndPp{
     display: flex;
@@ -22,12 +23,46 @@
     font-size: 30px;
     color: #eaac7b;
 }
+.interieurWithoutArab{
+    display: flex;
+    align-items: center;
+}
 .aboutDescri{
     margin-left: 25px;
     margin-right: 25px;
     color: #f2f8fe;
     font-size: 25px;
     font-weight: 500;
+}
+.arabesqueContainer{
+    display: flex;
+    justify-content: center;
+    top: -53px;
+    position: relative;
+}
+.arabesqueContainer img{
+    width: 300px;
+    z-index:1
+}
+.arabesqueBasContainer {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: -53px;
+    z-index:1
+}
+.arabesqueBasContainer img{
+    z-index:1;
+    width: 300px;
+    transform: scale(-1, -1);
+}
+.aboutDescriContainArab{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    align-content: center;
 }
 /* Smartphones (petits) */
 @media (max-width: 480px) {
