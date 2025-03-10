@@ -1,128 +1,76 @@
-.heroContainer{
+.heroContainer {
+    position: relative;
     height: 100vh;
-    background-size: cover;
-    background-attachment: fixed;
+    overflow: hidden;
     display: flex;
-    background-color: rgba(0, 0, 0, 0.5); /* Noir avec une opacité de 70% */
+    align-items: center;
+    justify-content: center;
 }
-.heroContainer::after {
-    content: "";
+
+/* Conteneur des images en arrière-plan */
+.heroBackground {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    transition: opacity 1.5s ease-in-out;
-    opacity: 1;
-}
-.blocDescriptif{
-    padding: 12%;
-    padding-right: 5%;
-    width: 35%;
-    background-color: rgba(0, 0, 0, 0.2); /* Noir avec une opacité de 70% */
-}
-.heroTitle{
-    font-weight: 600;
-    font-size: 50px;
-    color: #fff;
-}
-.heroDescri{
-    font-weight: 500;
-    font-size: 30px;
-    color: #fff;
-}
-h1{
-    font-size: large;
-    margin: 0.0em;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
 }
 
-/* 🔹 Hero initialement invisible */
+/* Image active (apparition progressive) */
+.heroBackground.active {
+    opacity: 1;
+}
+
+/* Bloc de description */
+.blocDescriptif {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    padding: 12%;
+    width: 35%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-right: 50%;
+}
+
+/* Animation d'apparition */
 .heroContainer {
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 1s ease-out, transform 1s ease-out;
-    background-size: cover;
-    background-position: center;
 }
 
-/* 🔹 Apparition au scroll */
 .heroContainer.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* 🔹 Effet d'apparition progressif pour le texte */
-.heroTitle, .heroDescri {
-    opacity: 1;
-    transform: translateY(10px);
-    transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
-}
-
-.heroContainer.visible .heroTitle,
-.heroContainer.visible .heroDescri {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* 🔹 Correction du fond sur mobile */
+/* Ajustements pour mobile */
 @media (max-width: 768px) {
     .heroContainer {
         background-attachment: scroll;
     }
 }
-/* Smartphones (petits) */
+
 @media (max-width: 480px) {
-  .blocDescriptif{
-    margin-top: 40px;
+  .blocDescriptif {
     width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white;    
-  }
-  .heroDescri{
-    font-size: 22px;
     text-align: center;
+    padding: 10%;
   }
-}
-
-/* Smartphones (moyens) */
-@media (min-width: 481px) and (max-width: 767px) {
-    body {
-        font-size: 16px;
-    }
-    .heroContainer {
-        background-attachment: scroll;
-    }
-}
-
-/* Tablettes */
-@media (min-width: 768px) and (max-width: 1024px) {
-    body {
-        font-size: 18px;
-    }
-    .parallax {
-        transform: translateY(var(--parallax-offset, 0px));
-    }
-    .heroContainer {
-        background-attachment: fixed;
-        background-position: center;
-        background-size: cover;
-        will-change: transform;
-    }
-}
-
-/* Petits ordinateurs */
-@media (min-width: 1025px) and (max-width: 1366px) {
-    body {
-        font-size: 20px;
-    }
-}
-
-/* Grands écrans */
-@media (min-width: 1367px) {
-    body {
-        font-size: 22px;
-    }
+  .heroDescri {
+    font-size: 22px;
+  }
 }

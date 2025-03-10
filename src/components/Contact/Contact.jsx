@@ -4,29 +4,23 @@ import { contacts } from '../data/contactsData';
 
 
 function Contact() {
-  const [isVisible, setIsVisible] = useState(false);
-  const contactRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
+    const contactRef = useRef(null);
 
-  useEffect(() => {
-    const currentRef = contactRef.current;
-    if (!currentRef || isVisible) return;
+    useEffect(() => {
+        const currentRef = contactRef.current;
+        if (!currentRef) return;
 
-    const observer = new IntersectionObserver(
-        ([entry], obs) => {
-            if (entry.isIntersecting) {
-                setIsVisible(true);
-                obs.disconnect();
-            }
-        },
-        { threshold: 0.3 }
-    );
+        const observer = new IntersectionObserver(
+            ([entry]) => setIsVisible(entry.isIntersecting),
+            { threshold: 0.3 }
+        );
 
-    observer.observe(currentRef);
-
-    return () => {
-      if (observer) observer.disconnect();
-    };
-}, [isVisible]);
+        observer.observe(currentRef);
+        return () => {
+            if (currentRef) observer.disconnect();
+        };
+    }, []);
 
 
     return (
