@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, OrbitControls, useGLTF } from '@react-three/drei';
 import TouchAppIcon from '@mui/icons-material/TouchApp';
@@ -7,48 +8,36 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import './helper.css';
 import { useTranslation } from 'react-i18next';
-import gun from "../assets/webp/gun copie.webp"
-import substance from "../assets/webp/blasphemous.webp"
-import diablo from "../assets/webp/illu diablo rhino version a colorer copie.webp"
-import gargouille from "../assets/webp/gargouille_render1croped.png"
+import gun from "../assets/webp/gun.webp";
+import gun2 from "../assets/webp/gun2.webp";
+import gun3 from "../assets/webp/gun3.webp";
+import substance from "../assets/webp/blasphemous.webp";
+import diablo from "../assets/webp/diabloRhino.webp";
+import gargouille from "../assets/webp/gargouille_render1croped.png";
 
 const projectsData = [
-    {
-        id: 1,
-        title: "3D Model 'Golden Boy'",
-        mainImage:  gun,
-        model: "/models/turn_around_gun.glb"
-    },
-    {
-        id: 2,
-        title: "Rendu susbstance painter",
-        mainImage: substance,
-        model: null
-    },
-    {
-        id: 3,
-        title: "diablo",
-        mainImage: diablo,
-        model: null
-    },
-    {
-        id: 4,
-        title: "Gargouille",
-        mainImage: gargouille,
-        model: "/models/gargouille.glb"
-    }
+    { id: 1, title: "3D Model 'Golden Boy'", mainImage: gun, model: "/models/turn_around_gun.glb", otherImages:[gun, gun2, gun3] },
+    { id: 2, title: "Rendu susbstance painter", mainImage: substance, model: null },
+    { id: 3, title: "Diablo", mainImage: diablo, model: null },
+    { id: 4, title: "Gargouille", mainImage: gargouille, model: "/models/gargouille.glb" }
 ];
 
 function Model({ modelPath }) {
+    useGLTF.preload(modelPath); 
     const { scene } = useGLTF(modelPath);
     const modelRef = useRef();
+    
     const [interacted, setInteracted] = useState(false);
 
     useEffect(() => {
         scene.traverse((child) => {
             if (child.isMesh) {
-                child.material.map.flipY = false;
-                child.material.map.premultipliedAlpha = false;
+                const material = child.material;
+                if (material) {
+                    material.metalness = 0;
+                    material.roughness = 1; 
+                    material.reflectivity = 0;
+                }
             }
         });
     }, [scene]);
@@ -61,23 +50,42 @@ function Model({ modelPath }) {
 
     useEffect(() => {
         const stopRotation = () => setInteracted(true);
-        window.addEventListener("mousedown", stopRotation);
-        window.addEventListener("touchstart", stopRotation);
+        document.addEventListener("mousedown", stopRotation);
+        document.addEventListener("touchstart", stopRotation);
         return () => {
-            window.removeEventListener("mousedown", stopRotation);
-            window.removeEventListener("touchstart", stopRotation);
+            document.removeEventListener("mousedown", stopRotation);
+            document.removeEventListener("touchstart", stopRotation);
         };
     }, []);
-
-    return <primitive ref={modelRef} object={scene} scale={0.008} rotation={[0,1.6,0.01]} />;
+    const controls = useRef();
+    <OrbitControls ref={controls} onStart={() => (controls.current.enabled = true)} />
+    return <primitive ref={modelRef} object={scene} scale={0.02} rotation={[0, 1.6, 0.01]} />;
 }
 
 function Projects() {
     const { t } = useTranslation();
     const [selectedProject, setSelectedProject] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isVisible, setIsVisible] = useState(false);
+    const portfolioRef = useRef(null);
 
     const cliquez = t('portFolio.cliquez');
+    
+    // Observer pour l'animation au scroll
+    useEffect(() => {
+        const currentRef = portfolioRef.current;
+        if (!currentRef) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => setIsVisible(entry.isIntersecting),
+            { threshold: 0.3 }
+        );
+
+        observer.observe(currentRef);
+        return () => {
+            if (currentRef) observer.disconnect();
+        };
+    }, []);
 
     // Ouvrir le modal
     const openModal = (index) => {
@@ -105,13 +113,20 @@ function Projects() {
     };
 
     return (
-        <section className="projectsSection">
+        <section 
+            ref={portfolioRef} 
+            className={`projectsSection ${isVisible ? 'visible' : ''}`}
+        >
             <div className="titlePortfolio">
                 <h3>Portfolio</h3>
             </div>
             <div className="gallery">
                 {projectsData.map((project, index) => (
-                    <div key={project.id} className="projectCard" onClick={() => openModal(index)}>
+                    <div 
+                        key={project.id} 
+                        className={`projectCard ${isVisible ? 'visible' : ''}`} 
+                        onClick={() => openModal(index)}
+                    >
                         <img src={project.mainImage} alt={project.title} className="mainImage" />
                         <h3>{project.title}</h3>
                     </div>
@@ -119,32 +134,33 @@ function Projects() {
             </div>
 
             {/* MODAL PLEIN ÉCRAN */}
-            {selectedProject && (
+            {selectedProject && createPortal(
                 <div className="modalOverlay" onClick={closeModal}>
-                    <div className="modalContent" onClick={(e) => e.stopPropagation()}>
-                        <button className="closeButton" onClick={closeModal}><CloseIcon /></button>
-                        
+                    <div className="modalContent" onClick={(e) => e.stopPropagation()}>                        
                         <h2>{selectedProject.title}</h2>
 
-                        {/* Si un modèle est disponible, afficher le modèle 3D */}
+                        {/* Affichage du modèle 3D si disponible */}
                         {selectedProject.model ? (
-                            <div className="modelViewer">
-                                <Canvas camera={{ position:[2,1,2]}}>
-                                    <Environment preset='studio' />
-                                    <ambientLight intensity={0.5} />
-                                    <directionalLight position={[0, 2, 0]} intensity={1.5} />
-                                    <Model modelPath={selectedProject.model} />
-                                    <OrbitControls minDistance={2} maxDistance={9}/>
-                                </Canvas>
-                                <p>{cliquez}<TouchAppIcon /></p>
-                            </div>
-                        ) : (
-                            <img src={selectedProject.mainImage} alt={selectedProject.title} className="modalImage" />
-                        )}
-                             <button className="navButton prev" onClick={prevProject}><ArrowBackIcon /></button>
-                             <button className="navButton next" onClick={nextProject}><ArrowForwardIcon /></button>
-                    </div>
+                <div className="modelViewer">
+                    <Canvas camera={{ position: [3, 2, 3] }}>
+                        <Environment preset="studio" />
+                        <ambientLight intensity={0} />
+                        <directionalLight position={[0, 3, 0]} intensity={0} />
+                        <Model modelPath={selectedProject.model} />
+                        <OrbitControls minDistance={6} maxDistance={12} />
+                    </Canvas>
+                    <p>{cliquez} <TouchAppIcon /></p>
                 </div>
+            ) : (
+                <img src={selectedProject.mainImage} alt={selectedProject.title} className="modalImage" />
+            )}
+                        <button className="closeButton" onClick={closeModal} aria-label="Close Modal"><CloseIcon /></button>
+                        <button className="navButton prev" onClick={prevProject} aria-label="Previous Project"><ArrowBackIcon /></button>
+                        <button className="navButton next" onClick={nextProject}  aria-label="Next Project"><ArrowForwardIcon /></button>
+                    </div>
+                </div>,
+                document.body
+
             )}
         </section>
     );

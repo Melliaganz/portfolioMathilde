@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './hero.css';
 
@@ -16,9 +16,8 @@ function Hero() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [loaded, setLoaded] = useState(false);
 
-    const images = [fond1, fond2, fond3, fond4, fond5];
+    const images = useMemo(() =>[fond1, fond2, fond3, fond4, fond5], []);
 
-    // Précharger les images pour éviter l'effet de clignotement
     useEffect(() => {
         const preloadImages = async () => {
             const promises = images.map((src) => {
@@ -29,13 +28,12 @@ function Hero() {
                 });
             });
             await Promise.all(promises);
-            setLoaded(true); // Marque les images comme préchargées
+            setLoaded(true);
         };
 
         preloadImages();
     }, []);
 
-    // Gérer le changement d'image avec un effet de fondu
     useEffect(() => {
         if (!loaded) return;
 
@@ -46,7 +44,6 @@ function Hero() {
         return () => clearInterval(interval);
     }, [loaded, images.length]);
 
-    // Intersection Observer pour l'effet d'apparition
     useEffect(() => {
         const currentRef = heroRef.current;
         if (!currentRef) return;
