@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
-
-:root{
+:root {
   font-family: 'Cinzel', sans-serif;
-
+  -webkit-font-smoothing: antialiased; /* Chrome, Safari */
+  text-rendering: optimizeLegibility; /* Meilleure lisibilité */
 }
+
 
 .App{
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: 'Cinzel', sans-serif;
-  background-image: url(./assets/webp/trame.webp);
+  background-image: url(/public/trame.webp);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;

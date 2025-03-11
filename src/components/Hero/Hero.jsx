@@ -14,36 +14,38 @@ function Hero() {
     const [isVisible, setIsVisible] = useState(false);
     const heroRef = useRef(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [loaded, setLoaded] = useState(false);
+    const [loadedImages, setLoadedImages] = useState([true, false, false, false, false]); // First image loads immediately
 
-    const images = useMemo(() =>[fond1, fond2, fond3, fond4, fond5], []);
+    const images = useMemo(() => [fond1, fond2, fond3, fond4, fond5], []);
 
+    // Lazy load images
     useEffect(() => {
-        const preloadImages = async () => {
-            const promises = images.map((src) => {
-                return new Promise((resolve) => {
-                    const img = new Image();
-                    img.src = src;
-                    img.onload = resolve;
+        images.forEach((src, index) => {
+            if (index === 0) return; // Skip first image (already loaded)
+            const img = new Image();
+            img.src = src;
+            img.onload = () => {
+                setLoadedImages((prev) => {
+                    const newLoaded = [...prev];
+                    newLoaded[index] = true;
+                    return newLoaded;
                 });
-            });
-            await Promise.all(promises);
-            setLoaded(true);
-        };
+            };
+        });
+    }, [images]);
 
-        preloadImages();
-    }, []);
-
+    // Start image transition only when first image is loaded
     useEffect(() => {
-        if (!loaded) return;
+        if (!loadedImages[0]) return;
 
         const interval = setInterval(() => {
             setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
         }, 6000);
 
         return () => clearInterval(interval);
-    }, [loaded, images.length]);
+    }, [loadedImages, images.length]);
 
+    // Handle visibility detection
     useEffect(() => {
         const currentRef = heroRef.current;
         if (!currentRef) return;
@@ -63,17 +65,19 @@ function Hero() {
         <section 
             ref={heroRef} 
             className={`heroContainer ${isVisible ? "visible" : ""}`} 
-            aria-label={t('hero.ariaLabel')}
+            aria-label={t('hero.title')}
             role="img"
         >
-            {loaded && images.map((src, index) => (
+            {images.map((src, index) => (
                 <div 
                     key={index} 
                     className={`heroBackground ${index === currentImageIndex ? 'active' : ''}`} 
-                    style={{ backgroundImage: `url(${src})` }}
+                    style={{
+                        backgroundImage: loadedImages[index] ? `url(${src})` : 'none'
+                    }}
                 />
             ))}
-            
+
             <div className="blocDescriptif">
                 <h1 className="heroTitle">{t('hero.title')}</h1>
                 <p className="heroDescri">{t('hero.description')}</p>

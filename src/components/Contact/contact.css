@@ -1,3 +1,7 @@
+body {
+    -webkit-font-smoothing: antialiased; /* Chrome, Safari */
+    text-rendering: optimizeLegibility; /* Meilleure lisibilité */
+}
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -17,7 +21,10 @@
 .contactsContainer ul li {
     opacity: 0;
     animation: fadeIn 0.5s ease-in-out forwards;
+    will-change: transform, opacity;
+    animation-delay: calc(var(--order) * 0.2s);
 }
+
 .titleContact {
     font-size: 50px;
     font-weight: 600;
@@ -47,10 +54,6 @@
     font-size: 25px;
     width: 95vw;
 }
-.contactsContainer ul li:nth-child(1) { animation-delay: 0.2s; }
-.contactsContainer ul li:nth-child(2) { animation-delay: 0.4s; }
-.contactsContainer ul li:nth-child(3) { animation-delay: 0.6s; }
-.contactsContainer ul li:nth-child(4) { animation-delay: 0.8s; }
 
 .contactsContainer a {
     display: flex;
@@ -78,7 +81,7 @@
 
 @media (max-width: 480px) {
     .titleContact {
-        scale: 0.7;
+        font-size: 35px;
     }
 
     .contactsContainer {

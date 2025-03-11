@@ -1,11 +1,10 @@
+
 .header {
     display: flex;
     flex-direction: row;
     position: fixed;
-    width: 100vw;
-    background-image: url(http://localhost:3000/static/media/trame.99e35d486bece457228b.webp);
-    background-repeat: none;
-    background-size: cover;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 1;
     padding: 10px 20px;
     align-items: center;
@@ -20,16 +19,22 @@
 .titreHeader { 
     color: #eaac7b; 
     font-weight: 600; 
-    font-size: 50px;
+    font-size: clamp(30px, 5vw, 50px);
     margin: 0;
 }
-
+h1{
+    font-size: clamp(30px, 5vw, 50px);
+    margin: 0px;
+}
 .navContainer {
+    /* max-height: 0; */
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+
 }
 
 .navContainer ul {
@@ -108,20 +113,16 @@
     }
 
     .navContainer {
-        display: none; /* Cache les éléments de la liste */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
     }
-
-    /* Afficher le menu lorsqu'il est ouvert */
+    
     .navContainer.open {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: absolute;
-        top: 100%; /* Position sous le header */
-        left: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.9); /* Fond pour le menu déroulant */
-        padding: 20px 0;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 
     .navContainer ul {

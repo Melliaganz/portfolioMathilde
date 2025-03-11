@@ -10,21 +10,23 @@ function Contact() {
     useEffect(() => {
         const currentRef = contactRef.current;
         if (!currentRef) return;
-
+    
         const observer = new IntersectionObserver(
             ([entry]) => setIsVisible(entry.isIntersecting),
             { threshold: 0.3 }
         );
-
+    
         observer.observe(currentRef);
+    
         return () => {
-            if (currentRef) observer.disconnect();
+            if (currentRef) observer.unobserve(currentRef);
         };
     }, []);
+    
 
 
     return (
-      <section ref={contactRef} className={`contactSection ${isVisible ? "visible" : ""}`}>
+    <section ref={contactRef} className={`contactSection ${isVisible ? "visible" : ""}`} aria-live="polite">
       <div className="titleContact">
           <h4>Contact</h4>
       </div>

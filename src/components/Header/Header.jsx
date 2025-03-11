@@ -1,18 +1,18 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import "./header.css";
-import { useTranslation } from 'react-i18next';
-import Langues from "../langues/Langues";
 import { Email, Grading, Home, Info, Person } from '@mui/icons-material';
+import React, { useEffect, useMemo, useRef, useReducer } from 'react';
+import { useTranslation } from 'react-i18next';
+import Langues from '../langues/Langues';
+
+const menuReducer = (state) => !state;
 
 function Header() {
     const { t } = useTranslation();
-    const [menuOpen, setMenuOpen] = useState(false);
-    const firstMenuItemRef = useRef(null); // 🔹 Référence pour le premier élément du menu
+    const firstMenuItemRef = useRef(null);
 
-    const toggleMenu = useCallback(() => setMenuOpen(prev => !prev), [setMenuOpen]);
+    const [menuOpen, toggleMenu] = useReducer(menuReducer, false);
 
-    const { texts, menuItems } = useMemo(() => {
-        const texts = {
+    const { texts, menuItems } = useMemo(() => ({
+        texts: {
             title: t('header.title'),
             home: t('header.home'),
             portfolio: t('header.portfolio'),
@@ -21,18 +21,15 @@ function Header() {
             contact: t('header.contact'),
             openMenu: t('aria-label.menuOuvert'),
             closeMenu: t('aria-label.menuFerme')
-        };
-
-        const menuItems = [
-            { id: "home", href: "/", text: texts.home, icon: <Home />, title: texts.home },
-            { id: "portfolio", href: "#portfolio", text: texts.portfolio, icon: <Person />, title: texts.portfolio },
-            { id: "about", href: "#about", text: texts.about, icon: <Info /> , title: texts.about},
-            { id: "resume", href: "#Resume", text: texts.resume, icon: <Grading />, title: texts.resume},
-            { id: "contact", href: "#Contact", text: texts.contact, icon: <Email />, title: texts.contact }
-        ];
-
-        return { texts, menuItems };
-    }, [t]);
+        },
+        menuItems: [
+            { id: "home", href: "/", text: t('header.home'), icon: <Home />, title: t('header.home') },
+            { id: "portfolio", href: "#portfolio", text: t('header.portfolio'), icon: <Person />, title: t('header.portfolio') },
+            { id: "about", href: "#about", text: t('header.about'), icon: <Info />, title: t('header.about') },
+            { id: "resume", href: "#Resume", text: t('header.resume'), icon: <Grading />, title: t('header.resume') },
+            { id: "contact", href: "#Contact", text: t('header.contact'), icon: <Email />, title: t('header.contact') }
+        ]
+    }), [t]);
 
     useEffect(() => {
         if (menuOpen && firstMenuItemRef.current) {
@@ -45,14 +42,20 @@ function Header() {
             <div className="headerContainer">
                 <h1 className="titreHeader">{texts.title}</h1>
                 <div className='languesContainer'>
-                <Langues />
+                    <Langues />
                 </div>
-                <button className="hamburger" onClick={toggleMenu} aria-label={menuOpen ? texts.closeMenu : texts.openMenu } aria-expanded={menuOpen} aria-haspopup>
+                <button 
+                    className="hamburger" 
+                    onClick={toggleMenu} 
+                    aria-label={menuOpen ? texts.closeMenu : texts.openMenu} 
+                    aria-expanded={menuOpen} 
+                    aria-haspopup
+                >
                     {menuOpen ? "✖" : "☰"}
                 </button>
-                <nav className={`navContainer ${menuOpen ? "open" : ""}`} role="navigation">
-                <ul role="menu">
-                         {menuItems.map(({ id, href, text, icon, title }) => (
+                <nav className={`navContainer ${menuOpen ? "open" : ""}`} role="navigation" aria-hidden={!menuOpen}>
+                    <ul role="menu">
+                        {menuItems.map(({ id, href, text, icon, title }) => (
                             <li key={id} role="menuitem">
                                 <a href={href} title={title}>{icon} {text}</a>
                             </li>
