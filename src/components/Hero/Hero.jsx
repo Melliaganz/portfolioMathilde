@@ -66,7 +66,6 @@ function Hero() {
             ref={heroRef} 
             className={`heroContainer ${isVisible ? "visible" : ""}`} 
             aria-label={t('hero.title')}
-            role="img"
         >
             {images.map((src, index) => (
                 <div 

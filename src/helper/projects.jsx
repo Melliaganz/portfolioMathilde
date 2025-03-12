@@ -13,7 +13,7 @@ import gun2 from "../assets/webp/gun2.webp";
 import gun3 from "../assets/webp/gun3.webp";
 import substance from "../assets/webp/blasphemous.webp";
 import diablo from "../assets/webp/diabloRhino.webp";
-import gargouille from "../assets/webp/gargouille_render1croped.png";
+import gargouille from "../assets/webp/gargouille_render1croped.webp";
 
 const projectsData = [
     { id: 1, title: "3D Model 'Golden Boy'", mainImage: gun, model: "/models/turn_around_gun.glb", otherImages:[gun, gun2, gun3] },
@@ -118,7 +118,7 @@ function Projects() {
             className={`projectsSection ${isVisible ? 'visible' : ''}`}
         >
             <div className="titlePortfolio">
-                <h3>Portfolio</h3>
+                <h1>Portfolio</h1>
             </div>
             <div className="gallery">
                 {projectsData.map((project, index) => (
@@ -128,7 +128,7 @@ function Projects() {
                         onClick={() => openModal(index)}
                     >
                         <img src={project.mainImage} alt={project.title} className="mainImage" />
-                        <h3>{project.title}</h3>
+                        <h2>{project.title}</h2>
                     </div>
                 ))}
             </div>

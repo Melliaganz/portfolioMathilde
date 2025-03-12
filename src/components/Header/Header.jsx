@@ -40,7 +40,7 @@ function Header() {
     return (
         <header className="header">
             <div className="headerContainer">
-                <h1 className="titreHeader">{texts.title}</h1>
+                <h1 className="titreHeader">Mathilde Hugues</h1>
                 <div className='languesContainer'>
                     <Langues />
                 </div>

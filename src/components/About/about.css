@@ -3,7 +3,7 @@
     margin-left: 50px;
     margin-right:50px;
     padding:25px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: var(--blackTransparent);
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -21,7 +21,7 @@
 .aboutTitle{
     font-weight: 700;
     font-size: 30px;
-    color: #eaac7b;
+    color: var(--primary);
 }
 .interieurWithoutArab{
     display: flex;
@@ -30,7 +30,7 @@
 .aboutDescri{
     margin-left: 25px;
     margin-right: 25px;
-    color: #f2f8fe;
+    color: var(--secondary);
     font-size: 25px;
     font-weight: 500;
 }

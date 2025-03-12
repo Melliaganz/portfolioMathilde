@@ -28,7 +28,7 @@ function Contact() {
     return (
     <section ref={contactRef} className={`contactSection ${isVisible ? "visible" : ""}`} aria-live="polite">
       <div className="titleContact">
-          <h4>Contact</h4>
+          <h1>Contact</h1>
       </div>
       <div className="contactsContainer">
           <div className="listeContainer">

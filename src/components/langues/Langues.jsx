@@ -1,6 +1,7 @@
 import React from 'react';
 import "../Header/header.css"
 import { useTranslation } from 'react-i18next';
+import "../../App.css"
 
 function Langues() {
     const { i18n } = useTranslation();
@@ -26,7 +27,8 @@ function Langues() {
                 <img
                     src="https://flagcdn.com/w320/gb.png"
                     alt="English"
-                    style={{ width: '40px', height: '30px' }}
+                    style={{width: 70.39, height: "auto"}}
+                    
                 />
             </button>
             <button
@@ -37,12 +39,13 @@ function Langues() {
                     cursor: 'pointer',
                     padding: '5px', 
                     borderRadius: '5px',
+                    title: "Français"
                 }}
             >
                 <img
                     src="https://flagcdn.com/w320/fr.png"
                     alt="Français"
-                    style={{ width: '40px', height: '30px' }}
+                    style={{width: 70.39, height: "auto"}}
                 />
             </button>
         </div>
