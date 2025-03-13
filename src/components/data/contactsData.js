@@ -1,6 +1,8 @@
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import artStationicon from '../../assets/webp/logoArtStation.webp'
+import discordIcon from "../../assets/webp/discord-logo.webp"
 
 export const contacts = [
     {
@@ -9,9 +11,10 @@ export const contacts = [
         text: "mathilde.hs",
         icon: (
             <img
-                src="https://img.icons8.com/m_rounded/512/FFFFFF/discord-logo.png"
+                src={discordIcon}
                 alt="Discord Icon"
-                style={{ width: "20px", verticalAlign: "middle", marginRight: "8px" }}
+                style={{ width: "20px", height: '100%', verticalAlign: "middle"}}
+                loading="lazy"  
             />
         ),
         title: "Discord"
@@ -41,11 +44,9 @@ export const contacts = [
         id:"artStation",
         href: "https://www.artstation.com/mathildehugues4",
         text: "Mathilde Hugues",
-        icon: (<img 
-                src="https://www.pngkey.com/png/full/307-3071381_professional-artworks-gallery-artstation-logo-white-png.png" 
-                alt="ArtStation Icon" 
-                style={{ width: "20px", verticalAlign: "middle", marginRight: "8px", color:"#fff" }}
-                />),
+        icon: <img src={artStationicon} alt="ArtStation" loading="lazy"                
+        style={{ width: "20px", height: '100%', verticalAlign: "middle", }}
+        />,
         title: "ArtStation"
     }
 ];
