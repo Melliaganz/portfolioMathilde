@@ -56,7 +56,7 @@ function Header() {
                     <ul role="menu">
                         {menuItems.map(({ id, href, text, icon, title }) => (
                             <li key={id} role="menuitem">
-                                <a href={href} title={title}>{icon} {text}</a>
+                                <a href={href} title={'Boutton '+title}>{icon} {text}</a>
                             </li>
                         ))}
                     </ul>

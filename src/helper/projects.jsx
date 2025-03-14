@@ -15,6 +15,7 @@ import substance from "../assets/webp/blasphemous.webp";
 import diablo from "../assets/webp/diabloRhino.webp";
 import gargouille from "../assets/webp/gargouille_render1croped.webp";
 
+
 const projectsData = [
     { id: 1, title: "3D Model 'Golden Boy'", mainImage: gun, model: "/models/turn_around_gun.glb", otherImages:[gun, gun2, gun3] },
     { id: 2, title: "Rendu susbstance painter", mainImage: substance, model: null },
@@ -61,14 +62,12 @@ function Model({ modelPath }) {
     <OrbitControls ref={controls} onStart={() => (controls.current.enabled = true)} />
     return <primitive ref={modelRef} object={scene} scale={0.02} rotation={[0, 1.6, 0.01]} />;
 }
-
 function Projects() {
-    const { t } = useTranslation();
     const [selectedProject, setSelectedProject] = useState(null);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
     const portfolioRef = useRef(null);
-
+    const { t } = useTranslation();
     const cliquez = t('portFolio.cliquez');
     
     // Observer pour l'animation au scroll
@@ -152,7 +151,7 @@ function Projects() {
                     <p>{cliquez} <TouchAppIcon /></p>
                 </div>
             ) : (
-                <img src={selectedProject.mainImage} alt={selectedProject.title + 'image'} className="modalImage" />
+                <img src={selectedProject.mainImage} alt={selectedProject.title + "image"} className="modalImage" />
             )}
                         <button className="closeButton" onClick={closeModal} aria-label="Close Modal"><CloseIcon /></button>
                         <button className="navButton prev" onClick={prevProject} aria-label="Previous Project"><ArrowBackIcon /></button>
