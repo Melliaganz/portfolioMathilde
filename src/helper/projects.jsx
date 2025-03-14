@@ -113,6 +113,7 @@ function Projects() {
 
     return (
         <section 
+            id="resume"
             ref={portfolioRef} 
             className={`projectsSection ${isVisible ? 'visible' : ''}`}
         >

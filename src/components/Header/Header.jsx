@@ -25,7 +25,7 @@ function Header() {
             { id: "home", href: "#home", text: t('header.home'), icon: <Home />, title: t('header.home') },
             { id: "portfolio", href: "#portfolio", text: t('header.portfolio'), icon: <Person />, title: t('header.portfolio') },
             { id: "about", href: "#about", text: t('header.about'), icon: <Info />, title: t('header.about') },
-            { id: "resume", href: "#Resume", text: t('header.resume'), icon: <Grading />, title: t('header.resume') },
+            { id: "resume", href: "#resume", text: t('header.resume'), icon: <Grading />, title: t('header.resume') },
             { id: "contact", href: "#contact", text: t('header.contact'), icon: <Email />, title: t('header.contact') }
         ]
     }), [t]);
