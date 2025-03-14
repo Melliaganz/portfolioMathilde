@@ -1,11 +1,1 @@
-.portfolioSection {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-/* 🔹 Apparition progressive au scroll */
-.portfolioSection.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+.portfolioSection{opacity:0;transform:translateY(40px);transition:opacity 1s ease-out,transform 1s ease-out}.portfolioSection.visible{opacity:1;transform:translateY(0)}
