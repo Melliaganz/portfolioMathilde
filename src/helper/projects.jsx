@@ -152,7 +152,7 @@ function Projects() {
                     <p>{cliquez} <TouchAppIcon /></p>
                 </div>
             ) : (
-                <img src={selectedProject.mainImage} alt={selectedProject.title} className="modalImage" />
+                <img src={selectedProject.mainImage} alt={selectedProject.title + 'image'} className="modalImage" />
             )}
                         <button className="closeButton" onClick={closeModal} aria-label="Close Modal"><CloseIcon /></button>
                         <button className="navButton prev" onClick={prevProject} aria-label="Previous Project"><ArrowBackIcon /></button>

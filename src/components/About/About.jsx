@@ -25,7 +25,7 @@ function About() {
         };
     }, []);
     return (
-        <section ref={aboutRef} className={`aboutSection ${isVisible ? 'visible' : ''}`}>
+        <section id="about" ref={aboutRef} className={`aboutSection ${isVisible ? 'visible' : ''}`}>
             <div className="aboutContainer">
                 <div className="aboutDescriContainArab">
                     <figure className="arabesqueContainer">

@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './hero.css';
 
-// Importation des images pour préchargement
 import fond1 from '../../assets/webp/fond1.webp';
 import fond2 from '../../assets/webp/fond2.webp';
 import fond3 from '../../assets/webp/fond3.webp';
@@ -14,14 +13,13 @@ function Hero() {
     const [isVisible, setIsVisible] = useState(false);
     const heroRef = useRef(null);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [loadedImages, setLoadedImages] = useState([true, false, false, false, false]); // First image loads immediately
+    const [loadedImages, setLoadedImages] = useState([true, false, false, false, false]); 
 
     const images = useMemo(() => [fond1, fond2, fond3, fond4, fond5], []);
 
-    // Lazy load images
     useEffect(() => {
         images.forEach((src, index) => {
-            if (index === 0) return; // Skip first image (already loaded)
+            if (index === 0) return; 
             const img = new Image();
             img.src = src;
             img.onload = () => {
@@ -34,7 +32,6 @@ function Hero() {
         });
     }, [images]);
 
-    // Start image transition only when first image is loaded
     useEffect(() => {
         if (!loadedImages[0]) return;
 
@@ -45,7 +42,6 @@ function Hero() {
         return () => clearInterval(interval);
     }, [loadedImages, images.length]);
 
-    // Handle visibility detection
     useEffect(() => {
         const currentRef = heroRef.current;
         if (!currentRef) return;
@@ -63,6 +59,7 @@ function Hero() {
 
     return (
         <section 
+            id="home"
             ref={heroRef} 
             className={`heroContainer ${isVisible ? "visible" : ""}`} 
             aria-label={t('hero.title')}

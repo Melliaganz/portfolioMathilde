@@ -24,6 +24,7 @@
 .titleContact {
     font-size: 50px;
     font-weight: 600;
+    padding: 10px;
     color: var(--primary);
     text-align: center;
     display: flex;
@@ -31,14 +32,13 @@
     justify-content: center; 
     gap: 20px; 
     position: relative;
+    background-color: var(--blackTransparent);
+    border-radius: 20px 20px 0px 0px;
 }
 
 .titleContact::before,
 .titleContact::after {
-    content: "";
-    width: 20vw; 
-    height: 4px; 
-    background-color: var(--pripary); 
+    content:"";width:20vw;height:4px;background-color:var(--primary)
 }
 .contactsContainer{ 
     display: flex;

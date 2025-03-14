@@ -22,7 +22,7 @@ function Portfolio() {
     }, []);
 
     return (
-        <section ref={portfolioRef} className={`portfolioSection ${isVisible ? 'visible' : ''}`}>
+        <section id="portfolio" ref={portfolioRef} className={`portfolioSection ${isVisible ? 'visible' : ''}`}>
             <Projects />
         </section>
     );

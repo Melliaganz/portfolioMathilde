@@ -26,7 +26,7 @@ function Contact() {
 
 
     return (
-    <section ref={contactRef} className={`contactSection ${isVisible ? "visible" : ""}`} aria-live="polite">
+    <section id="contact" ref={contactRef} className={`contactSection ${isVisible ? "visible" : ""}`} aria-live="polite">
       <div className="titleContact">
           <h1>Contact</h1>
       </div>
