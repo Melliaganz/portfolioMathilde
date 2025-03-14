@@ -126,7 +126,7 @@ function Projects() {
                         className={`projectCard ${isVisible ? 'visible' : ''}`} 
                         onClick={() => openModal(index)}
                     >
-                        <img src={project.mainImage} alt={project.title} className="mainImage" />
+                        <img src={project.mainImage} alt={project.title + 'image'} className="mainImage" />
                         <h2>{project.title}</h2>
                     </div>
                 ))}
