@@ -13,7 +13,8 @@ import gun2 from "../assets/webp/gun2.webp";
 import gun3 from "../assets/webp/gun3.webp";
 import substance from "../assets/webp/blasphemous.webp";
 import diablo from "../assets/webp/diabloRhino.webp";
-import gargouille from "../assets/webp/gargouille_render1croped.webp";
+import gargouille from "../assets/webp/gargouille.webp";
+import arabesque from "../assets/webp/arabesque1.webp"
 
 
 const projectsData = [
@@ -120,6 +121,8 @@ function Projects() {
             <div className="titlePortfolio">
                 <h1>Portfolio</h1>
             </div>
+            <img className="imgArabesque" src={arabesque} alt="enluminures" width={300} height="100%" />
+
             <div className="gallery">
                 {projectsData.map((project, index) => (
                     <div 
@@ -162,6 +165,8 @@ function Projects() {
                 document.body
 
             )}
+            <img className="imgArabesqueBas" src={arabesque} alt="enluminures" width={300} height={'100%'} />
+
         </section>
     );
 }
