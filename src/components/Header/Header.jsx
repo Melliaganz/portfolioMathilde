@@ -1,4 +1,4 @@
-import { Email, Grading, Home, Info, Person } from '@mui/icons-material';
+import { Email, Grading, Home, Person } from '@mui/icons-material';
 import React, { useEffect, useMemo, useRef, useReducer } from 'react';
 import { useTranslation } from 'react-i18next';
 import Langues from '../langues/Langues';
@@ -24,7 +24,7 @@ function Header() {
         menuItems: [
             { id: "home", href: "#home", text: t('header.home'), icon: <Home />, title: t('header.home') },
             { id: "portfolio", href: "#portfolio", text: t('header.portfolio'), icon: <Person />, title: t('header.portfolio') },
-            { id: "about", href: "#about", text: t('header.about'), icon: <Info />, title: t('header.about') },
+            // { id: "about", href: "#about", text: t('header.about'), icon: <Info />, title: t('header.about') },
             { id: "resume", href: "#resume", text: t('header.resume'), icon: <Grading />, title: t('header.resume') },
             { id: "contact", href: "#contact", text: t('header.contact'), icon: <Email />, title: t('header.contact') }
         ]

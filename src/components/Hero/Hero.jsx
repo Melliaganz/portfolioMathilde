@@ -76,7 +76,7 @@ function Hero() {
 
             <div className="blocDescriptif">
                 <h1 className="heroTitle">{t('hero.title')}</h1>
-                <p className="heroDescri">{t('hero.description')}</p>
+                <p className="heroDescri">{t('about.description')}</p>
             </div>
         </section>
     );
